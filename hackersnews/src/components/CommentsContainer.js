@@ -4,20 +4,23 @@ import { nbOfComments } from '../services/api';
 
 export const CommentsContainer = ({ commentsIds }) => {
     const [comments, setCommentsIds] = useState([]);
+    const [showComments, setShowComments] = useState(false);
    
     useEffect(() => {
         setCommentsIds(commentsIds && commentsIds.slice(0, nbOfComments));
-    }, []);
+    }, [showComments]);
+
+    const ontoggle = () => {
+      setShowComments(!showComments);
+    } 
 
     return comments && comments.length ?  (
-    <> 
-      <p>Comments: </p>
-      <ul>
-        {comments.map(commentId => (
-         <Comment key={commentId} commentId={commentId} />
-      ))} 
-      
-      </ul>
-    </>
-    ) : ( <p>No comments</p> );
+      <> 
+        <button onClick={ontoggle}> {showComments ? 'Hide Comments' : 'Show Comments'} </button>
+        <ul>
+          { showComments ?  comments.map(commentId => (<Comment key={commentId} commentId={commentId} />)) : null } 
+        </ul>
+      </>
+      ) : null ;
+  
 };
