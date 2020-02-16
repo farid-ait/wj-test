@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import { StoriesContainer } from './StoriesContainer';
 import './App.css';
 
-export const App = () => <p>Hello</p>
+export const App = () =>  (<StoriesContainer />)
