@@ -7,7 +7,7 @@ export const StoriesContainer = () => {
   
   useEffect(() => {
     getStoryIds().then(data => setStoryIds(data.slice(0, nbOfStories)));
-  }, [storyIds]);
+  }, []);
 
   return (
     <> 

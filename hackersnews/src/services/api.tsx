@@ -5,7 +5,7 @@ export const topStoriesUrl = `${baseUrl}topstories.json`;
 export const StoryUrl =  `${baseUrl}item/`;
 export const CommentUrl = `${baseUrl}item/`;
 export const nbOfStories = 10;
-export const nbOfComments = 3;
+export const nbOfComments = 20;
 
 export const getStoryIds = async () => {
     const result = await axios
