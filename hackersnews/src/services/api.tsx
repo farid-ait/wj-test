@@ -12,6 +12,7 @@ export interface CommentType {
     id: number,
     text: string,
     time: number,
+    deleted: boolean,
     kids: []
 }
 

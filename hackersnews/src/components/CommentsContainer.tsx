@@ -18,7 +18,7 @@ export const CommentsContainer: React.FC<CommentsProps> = (props:CommentsProps) 
       setShowComments(!showComments);
     } 
 
-    return comments && comments.length ?  (
+    return comments && comments.length ? (
       <> 
         <button onClick={onToggle}> {showComments ? 'Hide Comments' : 'Show Comments'} </button>
         <ul>
