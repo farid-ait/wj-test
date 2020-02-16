@@ -7,7 +7,26 @@ export const CommentUrl = `${baseUrl}item/`;
 export const nbOfStories = 10;
 export const nbOfComments = 20;
 
-export const getStoryIds = async () => {
+export interface CommentType {
+    by: string,
+    id: number,
+    text: string,
+    time: number,
+    kids: []
+}
+
+export interface StoryType {
+    by: string,
+    id: number,
+    title: string,
+    commentIds: number[]
+    time: number,
+    score: number,
+    url: string,
+    kids: []
+}
+
+export const getStoryIds = async (): Promise<number[]> => {
     const result = await axios
         .get(topStoriesUrl)
         .then(({ data }) => data.slice(0, nbOfStories));
@@ -15,7 +34,7 @@ export const getStoryIds = async () => {
     return result;
 }
 
-export const getStory = async(storyId : number) => {
+export const getStory = async(storyId : number): Promise<StoryType> => {
     const result = await axios
         .get( `${StoryUrl  + storyId}.json`)
         .then(({ data }) => data);
@@ -23,7 +42,7 @@ export const getStory = async(storyId : number) => {
     return result;
 }
 
-export const getComment = async(commentId: number) => {
+export const getComment = async(commentId: number): Promise<CommentType> => {
     const result = await axios
         .get( `${CommentUrl  + commentId}.json`)
         .then(({ data }) => data);
