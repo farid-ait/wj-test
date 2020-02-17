@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import { StoryType, getStory } from '../services/api';
 import { CommentsContainer } from './CommentsContainer';
-import moment from 'moment';
+import { StorySection, StoryTitle, StoryMeta } from '../styles/StoryStyle'
 
   
 export interface StoryProps {
@@ -16,10 +17,14 @@ export const Story: React.FC<StoryProps> = (props:StoryProps) => {
     }, []);
 
     return story && story.url ? (
-        <>
-            <h2><a href={story.url}>{story.title}</a></h2>
-            {story.score} points by {story.by} {moment.unix(story.time).fromNow()}
+        <StorySection>
+            <StoryTitle>
+                <a href={story.url}>{story.title}</a>
+            </StoryTitle>
+            <StoryMeta>
+                {story.score} points by {story.by} {moment.unix(story.time).fromNow()}
+            </StoryMeta>
             <CommentsContainer key={props.storyId} commentsIds={story.kids} />
-        </>
+        </StorySection>
     ) : null;
 };
